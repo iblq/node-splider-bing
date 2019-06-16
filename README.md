@@ -1,9 +1,12 @@
-# nodeSpider_rosi
-一个基于node.js的图片爬虫
+# node-splider-bing
 
-clone下了之后 npm install,
-然后项目目录下跑 node index.js
-就ok了。
+一个基于 node.js 的图片爬虫测试
 
-本地储存图片的路径为macOs下的个人设置，请自行设置测试哦，
-所爬的测试网站（仅限测试）为www.rosi.cc；
+批量保存 必应每日壁纸
+
+> 运行前先配置 config.js 相关参数
+
+```shell
+npm i
+node index.js
+```

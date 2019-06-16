@@ -74,10 +74,12 @@ tmp
 # https://ihatetomatoes.net/how-to-remove-experimentaldecorators-warning-in-vscode/
 # tsconfig.json
 
-images
+images/*
 node_modules/*
 node_modules/
 *Ima
 down
 xiao*
 ko*
+bi*
+ro*

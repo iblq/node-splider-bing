@@ -17,22 +17,13 @@ module.exports = {
     return res;
   },
 
-  getPageHref($) {
-    // 获取页数
-    let pageHrefList = [];
-    $('.pagination2 li a').each(async (i, e) => {
-      pageHrefList.push(e.attribs.href);
-    });
-    return [...new Set(pageHrefList)];
-  },
-
-  //  将请求到的pages通过cheerio解析，转化成可操作节点
+  //  将请求到的pages通过 cheerio 解析，转化成可操作节点
   getCurrentPage(data) {
     let list = [];
     const $ = cheerio.load(data);
 
     // 一页的图片
-    $('.article-content img').each(async (i, e) => {
+    $('.container img').each(async (i, e) => {
       let src = e.attribs.src;
 
       let imgObj = {
@@ -42,12 +33,7 @@ module.exports = {
       list.push(imgObj);
     });
 
-    const nextHrefs = this.getPageHref($);
-
-    return {
-      list,
-      nextHrefs
-    };
+    return list;
   },
 
   //  判断并创建储存爬取到内容的文件夹
@@ -70,7 +56,7 @@ module.exports = {
       if (!fs.existsSync(filePath)) {
         try {
           await rp({
-            url: 'http://www.rosimm8.cc/' + i.path,
+            url: i.path,
             resolveWithFullResponse: true
             // headers
           }).pipe(fs.createWriteStream(`${localPath}${num}/${i.name}`));
